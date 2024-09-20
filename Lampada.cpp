@@ -2,7 +2,7 @@
 #include "Atuador.hpp"
 using namespace std;
 
-class Lampada{
+class Lampada: public Atuador{
     private:
         int brilho;
 
@@ -12,13 +12,17 @@ class Lampada{
         }
 
         bool setBrilho(int brilho){
-            if(brilho == 1){
+            if(brilho >= 1){
                 return true;
             }
-        
+
             else{
                 return false;
             }
+        }
+
+        int getBrilho(){
+            return brilho;
         }
 
 };

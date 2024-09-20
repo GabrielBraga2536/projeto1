@@ -2,7 +2,7 @@
 #include "Sensor.hpp"
 using namespace std;
 
-class Umidade{
+class Umidade: public Sensor{
     private:
         float umidade;
 

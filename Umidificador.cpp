@@ -2,13 +2,13 @@
 #include "Atuador.hpp"
 using namespace std;
 
-class Umidificador{
+class Umidificador: public Atuador{
     private:
         int configuracao;
 
     public:
         Umidificador(int configuracao){
-        this->configuracao = configuracao;
+            this->configuracao = configuracao;
         }
 
         bool setConfiguracao(int configuracao){
@@ -19,6 +19,10 @@ class Umidificador{
             else{
                 return false;
             }
+        }
+
+        int getConfiguracaoUmidificador(){
+            return configuracao;
         }
 
 };

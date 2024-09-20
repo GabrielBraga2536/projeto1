@@ -2,7 +2,7 @@
 #include "Atuador.hpp"
 using namespace std;
 
-class Desumidificador{
+class Desumidificador: public Atuador{
     private:
         int configuracao;
 
@@ -15,10 +15,14 @@ class Desumidificador{
             if(configuracao == 0){
                 return true;
             }
-        
+
             else{
                 return false;
             }
+        }
+
+        int getConfiguracaoDesumidificador(){
+            return configuracao;
         }
 
 };

@@ -9,10 +9,9 @@ class Componente{
         int valor;
         string nome;
 
-
     public:
         Componente(int configuracao){
-        this->configuracao = configuracao;
+            this->configuracao = configuracao;
         }
 
         void ligar(){

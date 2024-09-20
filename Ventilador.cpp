@@ -2,7 +2,7 @@
 #include "Atuador.hpp"
 using namespace std;
 
-class Ventilador{
+class Ventilador: public Atuador{
     private:
         int velocidade;
 
@@ -21,4 +21,7 @@ class Ventilador{
             }
         }
 
+        int getVelocidade(){
+            return velocidade;
+        }
 };
