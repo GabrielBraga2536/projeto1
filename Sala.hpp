@@ -2,8 +2,12 @@
 #include <iostream>
 #include "Atuador.hpp"
 #include "Ventilador.hpp"
+#include "Umidificador.hpp"
 #include "Desumidificador.hpp"
 #include "Lampada.hpp"
+#include "Luminosidade.hpp"
+#include "Umidade.hpp"
+#include "Temperatura.hpp"
 #include "Sensor.hpp"
 using namespace std;
 
@@ -11,58 +15,58 @@ class Sala{
     private:
         Ventilador ventilador;
         Desumidificador desumidificador;
+        Umidificador umidificador;
         Lampada lampada;
+        Luminosidade luminosidade;
+        Temperatura temperatura;
+        Umidade umidade;
 
     public:
-        Sala(bool velocidade, bool configuracao, bool brilho) : 
-            ventilador{velocidade}, desumidificador{configuracao}, lampada{brilho}{}
+        Sala(int velocidade, int configuracao, int brilho, int estado) : 
+            ventilador{velocidade}, desumidificador{configuracao}, umidificador{estado}, lampada{brilho}, luminosidade{brilho}, temperatura{velocidade}, umidade{configuracao, estado}{}
 
         bool getVelocidadeVentilador(){
-            return ventilador.getVelocidade();
+            return temperatura.getVelocidade();
         }
 
-//        void setVentiladorVelocidade(bool novaVelocidade) {
-//                ventilador.setVelocidade(novaVelocidade); 
-//        }
+        void setVentiladorVelocidade(int novaVelocidade) {
+                ventilador.setVelocidade(novaVelocidade); 
+        }
+
+        float getTemperaturaC(){
+            return temperatura.getTemperaturaEmC();
+        }
+
+        float getTemperaturaF(){
+            return temperatura.getTemperaturaEmF();
+        }
+
+        float getTemperaturaK(){
+            return temperatura.getTemperaturaEmK();
+        }
 
         bool getBrilhoLampada(){
-            return lampada.getBrilho();
+            return luminosidade.estaClaro();
         }
 
-        void setBrilhoLampada(bool novoBrilho) {
+        void setBrilhoLampada(int novoBrilho) {
                 lampada.setBrilho(novoBrilho); 
         }
 
         bool getConfiguracaoDesumidificador(){
-            return desumidificador.getDesumidificador();
+            return umidade.getDesumidificador();
         }
 
-        void setConfiguracaoDesumidificador(bool novaConfiguracao) {
+        void setConfiguracaoDesumidificador(int novaConfiguracao) {
                 desumidificador.setDesumidificador(novaConfiguracao); 
         }
 
-//        void atualizarUmidificador(){
-//this->configuracao = configuracao;
-//}
-//
-//void atualizarDesumidificador(){
-//this->configuracao = configuracao;
-//}
-//
-//void atualizarLampada(){
-//this->brilho = brilho;
-//}
+        bool getConfiguracaoUmidificador(){
+            return umidade.getUmidificador();
+        }
 
-//bool getConfiguracaoUmidificador(){
-//return configuracao;
-//}
-//
-//bool getConfiguracaoDesumidificador(){
-//return configuracao;
-//}
-//
-//
-//bool getBrilho(){
-//return brilho;
-//}
+        void setConfiguracaoUmidificador(int novoEstado) {
+                umidificador.setUmidificador(novoEstado); 
+        }
+
 };
