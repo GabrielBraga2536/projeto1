@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include <Componente.hpp>
+
 using namespace std;
 
 class Atuador: public Componente{

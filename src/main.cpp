@@ -1,10 +1,12 @@
 #include <iostream>
+
 #include "Sala.hpp"
 #include "Componente.hpp"
 #include "Sensor.hpp"
 #include "Temperatura.cpp"
 #include "Luminosidade.cpp"
 #include "Umidade.cpp"
+
 using namespace std;
 
 int main(){
