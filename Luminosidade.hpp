@@ -13,11 +13,10 @@ class Luminosidade: public Sensor{
         int brilho;
 
     public:
-        Luminosidade(int brilho){
-            this->brilho = brilho;
-        }
+        Luminosidade(string nome, bool ligado, bool conectado, int valor, int numero, int brilho, float luminosidade): Sensor(nome, ligado, conectado, valor, numero), luminosidade{luminosidade}, brilho{brilho}{}
 
         bool estaClaro(){
+            luminosidade = 1;
             return brilho;
         }   
 };

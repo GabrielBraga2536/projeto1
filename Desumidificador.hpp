@@ -8,18 +8,10 @@ class Desumidificador: public Atuador{
         bool configuracao;
 
     public:
-        Desumidificador(bool configuracao){
-        this->configuracao = configuracao;
-        }
+        Desumidificador(string nome, bool ligado, bool conectado, int valor, float conta, bool configuracao):Atuador(nome, ligado, conectado, valor, conta), configuracao{configuracao}{}
 
-        bool setDesumidificador(bool configuracao){
-            if(configuracao == 0){
-                return true;
-            }
-
-            else{
-                return false;
-            }
+        void setDesumidificador(bool configuracao){
+            this->configuracao = configuracao;
         }
 
         bool getDesumidificador(){

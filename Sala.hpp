@@ -22,15 +22,19 @@ class Sala{
         Umidade umidade;
 
     public:
-        Sala(bool velocidade, bool configuracao, bool estado, bool brilho) : 
-            ventilador{velocidade}, desumidificador{configuracao}, umidificador{estado}, lampada{brilho}, luminosidade{brilho}, temperatura{velocidade}, umidade{configuracao, estado}{}
+
+
+        Sala(string nome, bool ligado, bool conectado, int valor, float conta, int numero, int velocidade, bool brilho, int intensidade, bool estado, bool ajuste, bool configuracao, float umidadeRelativa, float luminosidade) : 
+            ventilador{nome, ligado, conectado, valor, conta, velocidade}, 
+            desumidificador{nome, ligado, conectado, valor, conta, configuracao}, 
+            umidificador{nome, ligado, conectado, valor, conta, estado, ajuste}, 
+            lampada{nome, ligado, conectado, valor, conta, brilho, intensidade}, 
+            luminosidade{nome, ligado, conectado, valor, numero, brilho, luminosidade}, 
+            temperatura{nome, ligado, conectado, valor, numero, velocidade}, 
+            umidade{nome, ligado, conectado, valor, numero, umidadeRelativa, configuracao, estado}{}
 
         bool getVelocidadeVentilador(){
             return ventilador.getVelocidade();
-        }
-
-        void setVentiladorVelocidade(bool novaVelocidade) {
-                ventilador.setVelocidade(novaVelocidade); 
         }
 
         float getTemperaturaC(){
@@ -53,16 +57,8 @@ class Sala{
             return lampada.getLampadaEstado();
         }
 
-        void setBrilhoLampada(bool novoBrilho) {
-                lampada.setBrilho(novoBrilho); 
-        }
-
         bool getConfiguracaoDesumidificador(){
             return desumidificador.getDesumidificador();
-        }
-
-        void setConfiguracaoDesumidificador(bool novaConfiguracao) {
-                desumidificador.setDesumidificador(novaConfiguracao); 
         }
 
         bool getConfiguracaoUmidificador(){
@@ -73,8 +69,19 @@ class Sala{
             return umidade.getUmidadeRelativa();
         }
 
-        void setConfiguracaoUmidificador(bool novoEstado) {
-                umidificador.setUmidificador(novoEstado); 
+        void setVelocidadeVentilador(int novaVelocidade) {
+                ventilador.setVelocidade(novaVelocidade); 
         }
 
+        void setEstadoUmidificador(bool novoEstado) {
+                umidificador.setUmidificador(novoEstado); 
+        }
+        
+        void setConfiguracaoDesumidificador(bool novaConfiguracao) {
+                desumidificador.setDesumidificador(novaConfiguracao); 
+        }
+        
+        void setBrilhoLampada(bool novoBrilho) {
+                lampada.setBrilho(novoBrilho); 
+        }
 };

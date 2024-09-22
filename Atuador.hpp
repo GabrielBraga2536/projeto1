@@ -1,15 +1,18 @@
 #pragma once 
 #include <iostream>
+#include "Componente.hpp"
+using namespace std;
 
-class Atuador {
+class Atuador: public Componente{
     private:
-        int valor; 
+        float conta;
     public:
-        Atuador() {}
+        Atuador(string nome, bool ligado, bool conectado, int valor, float conta): Componente(nome, ligado, conectado, valor), conta{conta}{}
+
         int getValor() { 
-            return valor; 
+            return conta; 
         } 
-        bool setValor(int valor) { 
-            return valor; 
+        bool setValor(int conta) { 
+            return conta; 
         } 
 };

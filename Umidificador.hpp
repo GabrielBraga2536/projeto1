@@ -6,20 +6,14 @@ using namespace std;
 class Umidificador: public Atuador{
     private:
         bool estado;
+        bool ajuste;
 
     public:
-        Umidificador(bool estado){
-        this->estado = estado;
-        }
+        Umidificador(string nome, bool ligado, bool conectado, int valor, float conta, bool estado, bool ajuste):Atuador(nome, ligado, conectado, valor, conta), estado{estado}, ajuste{ajuste}{}
 
-        bool setUmidificador(bool estado){
-            if(estado >= 1){
-                return true;
-            }
-
-            else{
-                return false;
-            }
+        void setUmidificador(bool estado){
+            ajuste = 0;
+            this->estado = estado;
         }
 
         bool getUmidificador(){

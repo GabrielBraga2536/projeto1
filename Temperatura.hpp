@@ -8,11 +8,10 @@ class Temperatura: public Sensor{
         float temperaturaEmF;
         float temperaturaEmK;
         int velocidade;
+        float ajuste;
 
     public:
-        Temperatura(int velocidade){
-            this->velocidade = velocidade;
-        }
+        Temperatura(string nome, bool ligado, bool conectado, int valor, int numero, int velocidade): Sensor(nome, ligado, conectado, valor, numero), velocidade{velocidade}{}
 
         float getTemperaturaEmC(){
             temperaturaEmC = velocidade;
@@ -29,5 +28,9 @@ class Temperatura: public Sensor{
             temperaturaEmC = velocidade;
             temperaturaEmK = temperaturaEmC + 273.15;
             return temperaturaEmK;
+        }
+
+        void setAjuste(float ajuste){
+            this->ajuste = ajuste;
         }
 };

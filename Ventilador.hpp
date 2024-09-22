@@ -5,25 +5,16 @@ using namespace std;
 
 class Ventilador: public Atuador{
     private:
-        bool velocidade;
+        int velocidade;
 
     public:
-        Ventilador(bool velocidade){
+        Ventilador(string nome, bool ligado, bool conectado, int valor, float conta, int velocidade):Atuador(nome, ligado, conectado, valor, conta), velocidade{velocidade}{}
+
+        void setVelocidade(int velocidade){
             this->velocidade = velocidade;
         }
 
-        void setVelocidade(bool velocidade){
-            if (velocidade >= 1){
-                velocidade = 1;
-            }
-
-            else{
-                velocidade = 0;
-            }
-        }
-
-
-        bool getVelocidade(){
+        int getVelocidade(){
             if (velocidade >= 1){
                 return true;
             }

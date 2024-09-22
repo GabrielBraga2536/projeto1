@@ -1,21 +1,23 @@
 #pragma once
 #include <iostream>
-#include "Atuador.hpp"
+#include "Sensor.hpp"
 using namespace std;
 
-class Umidade: public Atuador{
+class Umidade: public Sensor{
     private:
         float umidadeRelativa;
-        int configuracao;
-        int estado;
+        bool configuracao;
+        bool estado;
 
     public:
-        Umidade(int configuracao, int estado){
-        this->configuracao = configuracao;
-        this->estado = estado;
-        }
+        Umidade(string nome, bool ligado, bool conectado, int valor, int numero, float umidadeRelativa, bool configuracao, bool estado): Sensor(nome, ligado, conectado, valor, numero), umidadeRelativa{umidadeRelativa}, configuracao{configuracao}, estado{estado}{}
 
         float getUmidadeRelativa(){
+            if(configuracao == 1){
+                if(estado == 1){
+                    return umidadeRelativa;
+                }
+            }
             umidadeRelativa = 12;
             return umidadeRelativa;
         }
