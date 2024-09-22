@@ -5,19 +5,24 @@ using namespace std;
 
 class Lampada: public Atuador{
     private:
-        bool brilho;
+        int brilho;
         int intensidade;
 
     public:
-        Lampada(string nome, bool ligado, bool conectado, int valor, float conta, bool brilho, int intensidade):Atuador(nome, ligado, conectado, valor, conta), brilho{brilho}, intensidade{intensidade}{}
+        Lampada(string nome, bool ligado, bool conectado, int valor, float conta, int brilho, int intensidade):Atuador(nome, ligado, conectado, valor, conta), brilho{brilho}, intensidade{intensidade}{}
 
-        void setBrilho(bool brilho){
-            intensidade = 0;
-            this->brilho = brilho;
+        void setBrilho(){
+            if (getValorAtuador() >= 1){
+                brilho = 1;
+            }
+            else{
+                brilho = 0;
+            }
+            intensidade = getValorAtuador();
         }
 
-        bool getLampadaEstado(){
-            return brilho;
+        int getLampadaEstado(){
+            return getValorAtuador();
         } 
 
 };

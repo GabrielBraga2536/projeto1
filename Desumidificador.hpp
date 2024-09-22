@@ -11,11 +11,22 @@ class Desumidificador: public Atuador{
         Desumidificador(string nome, bool ligado, bool conectado, int valor, float conta, bool configuracao):Atuador(nome, ligado, conectado, valor, conta), configuracao{configuracao}{}
 
         void setDesumidificador(bool configuracao){
-            this->configuracao = configuracao;
+            if (getValorAtuador() >= 0){
+                configuracao = 1;
+            }
+            else{
+                configuracao = 0;
+            }
         }
 
-        bool getDesumidificador(){
-            return configuracao;
+        string getDesumidificador(){
+            if(getValorAtuador() == 1){
+                return "Ligado";
+                configuracao = 1;
+            }
+            else{
+                return "Desligado";
+            }
         }
 
 };

@@ -16,8 +16,13 @@ class Umidificador: public Atuador{
             this->estado = estado;
         }
 
-        bool getUmidificador(){
-            return estado;
+        string getUmidificador(){
+            if(getValorAtuador() == 1){
+                return "Ligado";
+            }
+            else{
+                return "Desligado";
+            }
         }
 
 };

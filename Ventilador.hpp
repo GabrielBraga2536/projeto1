@@ -10,12 +10,12 @@ class Ventilador: public Atuador{
     public:
         Ventilador(string nome, bool ligado, bool conectado, int valor, float conta, int velocidade):Atuador(nome, ligado, conectado, valor, conta), velocidade{velocidade}{}
 
-        void setVelocidade(int velocidade){
-            this->velocidade = velocidade;
+        void setVelocidade(){
+            velocidade = getValorAtuador();
         }
 
         int getVelocidade(){
-            if (velocidade >= 1){
+            if (getValorAtuador() >= 1){
                 return true;
             }
 

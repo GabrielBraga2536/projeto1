@@ -22,6 +22,14 @@ class Componente{
             this->nome = nome;
         }
 
+        void setConectarOuDesconectar(bool conectado){
+            this->conectado = conectado;
+            if (conectado == 0){
+                ligado = 0;
+                valor = 0;
+            }
+        }
+
         void setLigarOuDesligar(bool ligado){
             try{
                 if(conectado == 0){
@@ -30,14 +38,8 @@ class Componente{
                 this->ligado = ligado;
             }catch(Defeitos e){
                 cout << e.mensagem << endl;
-            }
-        }
-
-        void setConectadoOuDesconectado(bool conectado){
-            if(conectado == 0){
                 ligado = 0;
             }
-            this->conectado = conectado;
         }
 
         void setValorNovo(int valor){
@@ -48,7 +50,24 @@ class Componente{
                 this->valor = valor;
             }catch(Defeitos e){
                 cout << e.mensagem << endl;
+                valor = 0;
             }
+        }
+
+        bool getConectadoOuDesconectado(){
+            return conectado;
+        }
+
+        bool getLigadoOuDesligado(){
+            return ligado;
+        }
+
+        string getNomeAtuador(){
+            return nome;
+        }
+
+        int getValorAtuador(){
+            return valor;
         }
 
 };

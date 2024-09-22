@@ -10,40 +10,22 @@
 using namespace std;
 
 int main(){
-//    Sala s1(bool velocidade, bool configuracao, bool estado, bool brilho);
-//    Sala (define quais aparelhos estão ligados (ventilador, desumidificador, umidificador, lampada))
+//    Sala s1(string nome, bool ligado, bool conectado, int valor, float conta, int numero, int velocidade, bool brilho, int intensidade, bool estado, bool ajuste, bool configuracao, float umidadeRelativa, float luminosidade);
 
-    Sala s1("Oi",1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1);
-    //velocidade do ventilador que define os valores do sensor das temperaturas
-    cout << "Ventilador: " << s1.getVelocidadeVentilador() <<endl;
-    cout << "Temperatura em Celcius: " << s1.getTemperaturaC() <<endl;
-    cout << "Temperatura em Fahrenheit : " << s1.getTemperaturaF() <<endl;
-    cout << "Temperatura em Kelvin: " << s1.getTemperaturaK() <<endl;
-    //estado do umidificador e configuracao do desumidificador para definir a umidade
-    cout << "Desumidificador: " << s1.getConfiguracaoDesumidificador() <<endl;
-    cout << "Umidificador: " << s1.getConfiguracaoUmidificador() <<endl;
-    cout << "Umidade: " << s1.getUmidade() <<endl;
-    //estado do brilho da lampada e sensor se está claro
-    cout << "Lampada: " << s1.getLampada() << endl;
-    cout << "Brilho: " << s1.getBrilho() << endl;
-    //Teste do alterar os valores
-    s1.setVelocidadeVentilador(0);
-    s1.setEstadoUmidificador(0);
-    s1.setConfiguracaoDesumidificador(0);
-    s1.setBrilhoLampada(0);
-    //velocidade alterada do ventilador que define os valores do sensor das temperaturas
-    cout << "\nValores alterados:" << endl;
-    cout << "Ventilador: " << s1.getVelocidadeVentilador() <<endl;
-    cout << "Temperatura em Celcius: " << s1.getTemperaturaC() <<endl;
-    cout << "Temperatura em Fahrenheit : " << s1.getTemperaturaF() <<endl;
-    cout << "Temperatura em Kelvin: " << s1.getTemperaturaK() <<endl;
-    //estado alterado do umidificador e configuracao alterada do desumidificador para definir a umidade
-    cout << "Desumidificador: " << s1.getConfiguracaoDesumidificador() <<endl;
-    cout << "Umidificador: " << s1.getConfiguracaoUmidificador() <<endl;
-    cout << "Umidade: " << s1.getUmidade() <<endl;
-    //estado alterado do brilho da lampada e sensor se está claro
-    cout << "Lampada: " << s1.getLampada() << endl;
-    cout << "Brilho: " << s1.getBrilho() << endl;
+    Sala s1("Oi",1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 10, 1);
 
-    //Atuador s2(1);
+    s1.atualizarSensores();
+    s1.atualizarAtuadores();
+    s1.setNomeDoAtuador("Lampada");
+    s1.setValorNovoDoAtuador(0);
+    s1.setNomeDoAtuador("Umidificador");
+    s1.setValorNovoDoAtuador(0);
+    s1.setNomeDoAtuador("Desumidificador");
+    s1.setValorNovoDoAtuador(0);
+    s1.setNomeDoAtuador("Ventilador");
+    s1.setValorNovoDoAtuador(0);
+    cout << endl;
+    s1.atualizarSensores();
+    s1.atualizarAtuadores();
+
 }
