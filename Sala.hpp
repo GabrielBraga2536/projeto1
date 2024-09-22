@@ -22,14 +22,14 @@ class Sala{
         Umidade umidade;
 
     public:
-        Sala(int velocidade, int configuracao, int brilho, int estado) : 
+        Sala(bool velocidade, bool configuracao, bool estado, bool brilho) : 
             ventilador{velocidade}, desumidificador{configuracao}, umidificador{estado}, lampada{brilho}, luminosidade{brilho}, temperatura{velocidade}, umidade{configuracao, estado}{}
 
         bool getVelocidadeVentilador(){
-            return temperatura.getVelocidade();
+            return ventilador.getVelocidade();
         }
 
-        void setVentiladorVelocidade(int novaVelocidade) {
+        void setVentiladorVelocidade(bool novaVelocidade) {
                 ventilador.setVelocidade(novaVelocidade); 
         }
 
@@ -45,27 +45,35 @@ class Sala{
             return temperatura.getTemperaturaEmK();
         }
 
-        bool getBrilhoLampada(){
+        bool getBrilho(){
             return luminosidade.estaClaro();
         }
 
-        void setBrilhoLampada(int novoBrilho) {
+        bool getLampada(){
+            return lampada.getLampadaEstado();
+        }
+
+        void setBrilhoLampada(bool novoBrilho) {
                 lampada.setBrilho(novoBrilho); 
         }
 
         bool getConfiguracaoDesumidificador(){
-            return umidade.getDesumidificador();
+            return desumidificador.getDesumidificador();
         }
 
-        void setConfiguracaoDesumidificador(int novaConfiguracao) {
+        void setConfiguracaoDesumidificador(bool novaConfiguracao) {
                 desumidificador.setDesumidificador(novaConfiguracao); 
         }
 
         bool getConfiguracaoUmidificador(){
-            return umidade.getUmidificador();
+            return umidificador.getUmidificador();
         }
 
-        void setConfiguracaoUmidificador(int novoEstado) {
+        float getUmidade(){
+            return umidade.getUmidadeRelativa();
+        }
+
+        void setConfiguracaoUmidificador(bool novoEstado) {
                 umidificador.setUmidificador(novoEstado); 
         }
 

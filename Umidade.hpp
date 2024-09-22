@@ -16,15 +16,10 @@ class Umidade: public Atuador{
         }
 
         float getUmidadeRelativa(){
+            umidadeRelativa = 12;
             return umidadeRelativa;
         }
 
-        bool getUmidificador(){
-            return estado;
-        }
 
-        bool getDesumidificador(){
-            return configuracao;
-        }
 
 };

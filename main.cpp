@@ -10,25 +10,20 @@
 using namespace std;
 
 int main(){
-//    Sala s1(float temperaturaEmC, float luminosidade, float umidade, int velocidade, bool configuracao, int brilho);
+//    Sala s1(bool velocidade, bool configuracao, bool estado, bool brilho);
+//    Sala (define quais aparelhos estão ligados (ventilador, desumidificador, umidificador, lampada))
 
-//    Sala s1(float 123, float 1, float 32, int 2, bool 1, int 2);
-
-    Sala s1(1, 1, 0, 0);
-    cout << "Lampada: " << s1.getBrilhoLampada() << endl;
-    cout << "Desumidificador: " << s1.getConfiguracaoDesumidificador() <<endl;
-    cout << "Umidificador: " << s1.getConfiguracaoUmidificador() <<endl;
+    Sala s1(0, 0, 0, 1);
+    //velocidade do ventilador que define os valores do sensor das temperaturas
     cout << "Ventilador: " << s1.getVelocidadeVentilador() <<endl;
     cout << "Temperatura em Celcius: " << s1.getTemperaturaC() <<endl;
     cout << "Temperatura em Fahrenheit : " << s1.getTemperaturaF() <<endl;
     cout << "Temperatura em Kelvin: " << s1.getTemperaturaK() <<endl;
-
-//    s1.setVentiladorVelocidade(100);
-
-//    cout << "Ventilador: " << s1.getVelocidadeVentilador() <<endl;
-
-//    s1.setBrilhoLampada();
-//    s1.setConfiguracaoDesumidificador();
-//    s1.setConfiguracaoUmidificador();
-//    s1.setVelocidadeVentilador();
+    //estado do umidificador e configuracao do desumidificador para definir a umidade
+    cout << "Desumidificador: " << s1.getConfiguracaoDesumidificador() <<endl;
+    cout << "Umidificador: " << s1.getConfiguracaoUmidificador() <<endl;
+    cout << "Umidade: " << s1.getUmidade() <<endl;
+    //estado do brilho da lampada e sensor se está claro
+    cout << "Lampada: " << s1.getLampada() << endl;
+    cout << "Brilho: " << s1.getBrilho() << endl;
 }

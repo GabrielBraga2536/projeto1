@@ -30,14 +30,4 @@ class Temperatura: public Sensor{
             temperaturaEmK = temperaturaEmC + 273.15;
             return temperaturaEmK;
         }
-
-        bool getVelocidade(){
-            if (velocidade >= 1){
-                return true;
-            }
-
-            else{
-                return false;
-            }
-        }
 };

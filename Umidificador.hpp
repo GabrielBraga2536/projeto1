@@ -5,14 +5,14 @@ using namespace std;
 
 class Umidificador: public Atuador{
     private:
-        int estado;
+        bool estado;
 
     public:
-        Umidificador(int estado){
+        Umidificador(bool estado){
         this->estado = estado;
         }
 
-        bool setUmidificador(int estado){
+        bool setUmidificador(bool estado){
             if(estado >= 1){
                 return true;
             }
@@ -20,6 +20,10 @@ class Umidificador: public Atuador{
             else{
                 return false;
             }
+        }
+
+        bool getUmidificador(){
+            return estado;
         }
 
 };

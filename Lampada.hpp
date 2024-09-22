@@ -5,14 +5,14 @@ using namespace std;
 
 class Lampada: public Atuador{
     private:
-        int brilho;
+        bool brilho;
 
     public:
-        Lampada(int brilho){
+        Lampada(bool brilho){
         this->brilho = brilho;
         }
 
-        bool setBrilho(int brilho){
+        bool setBrilho(bool brilho){
             if(brilho >= 1){
                 return true;
             }
@@ -22,6 +22,8 @@ class Lampada: public Atuador{
             }
         }
 
-
+        bool getLampadaEstado(){
+            return brilho;
+        } 
 
 };

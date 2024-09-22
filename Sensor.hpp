@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include "Componente.hpp"
+//#include "Componente.hpp"
 using namespace std;
 
 class Sensor{

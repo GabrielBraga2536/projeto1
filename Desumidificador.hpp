@@ -5,14 +5,14 @@ using namespace std;
 
 class Desumidificador: public Atuador{
     private:
-        int configuracao;
+        bool configuracao;
 
     public:
-        Desumidificador(int configuracao){
+        Desumidificador(bool configuracao){
         this->configuracao = configuracao;
         }
 
-        bool setDesumidificador(int configuracao){
+        bool setDesumidificador(bool configuracao){
             if(configuracao == 0){
                 return true;
             }
@@ -22,5 +22,8 @@ class Desumidificador: public Atuador{
             }
         }
 
+        bool getDesumidificador(){
+            return configuracao;
+        }
 
 };
