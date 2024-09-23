@@ -8,6 +8,7 @@ class Sensor: public Componente{
         int numero;
 
     public:
+        //Criando o construtor do "Sensor" para conectar todos sensores em um arquivo, passar todos para "Sala" e herdar de "Componentes", também cria suas funções para poder alterar valores de "numero"
         Sensor(string nome, bool ligado, bool conectado, int valor, int numero): Componente(nome, ligado, conectado, valor), numero{numero}{}
 
     void setNumero(int numero){

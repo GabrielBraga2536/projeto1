@@ -11,6 +11,7 @@ class Componente{
         string nome;
 
     public:
+        //criando o construtor de "Componente" e suas funções para alterar os valores de ligado, conectado e valor
         Componente(string nome, bool ligado, bool conectado, int valor){
             this->ligado = ligado;
             this->conectado = conectado;
@@ -24,34 +25,14 @@ class Componente{
 
         void setConectarOuDesconectar(bool conectado){
             this->conectado = conectado;
-            if (conectado == 0){
-                ligado = 0;
-                valor = 0;
-            }
         }
 
         void setLigarOuDesligar(bool ligado){
-            try{
-                if(conectado == 0){
-                    throw Defeitos("O aparelho está desconectado!");
-                }
-                this->ligado = ligado;
-            }catch(Defeitos e){
-                cout << e.mensagem << endl;
-                ligado = 0;
-            }
+            this->ligado = ligado;
         }
 
         void setValorNovo(int valor){
-            try{
-                if(ligado == 0){
-                    throw Defeitos("O aparelho está desligado!");
-                }
-                this->valor = valor;
-            }catch(Defeitos e){
-                cout << e.mensagem << endl;
-                valor = 0;
-            }
+            this->valor = valor;
         }
 
         bool getConectadoOuDesconectado(){
@@ -69,5 +50,4 @@ class Componente{
         int getValorAtuador(){
             return valor;
         }
-
 };
