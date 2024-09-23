@@ -18,7 +18,7 @@ class Umidificador: public Atuador{
         }
         //Função para informar se o Umidificador está ligado ou desligado
         string getUmidificador(){
-            if(getValorAtuador() == 1){
+            if(getValorAtuador() >= 1){
                 return "Ligado";
             }
             else{

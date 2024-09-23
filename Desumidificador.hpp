@@ -13,7 +13,7 @@ class Desumidificador: public Atuador{
 
         //Função para alterar o estado de ligado ou desligado do Desumidificador (não está sendo utilizador, provável que será alterado, pois isso é alterado pelos valores de "ligado", "conectado" e "valor")
         void setDesumidificador(bool configuracao){
-            if (getValorAtuador() >= 0){
+            if (getValorAtuador() >= 1){
                 configuracao = 1;
             }
             else{
@@ -22,7 +22,7 @@ class Desumidificador: public Atuador{
         }
         //Função para informar o estado do Desumidificador
         string getDesumidificador(){
-            if(getValorAtuador() == 1){
+            if(getValorAtuador() >= 1){
                 return "Ligado";
                 configuracao = 1;
             }
