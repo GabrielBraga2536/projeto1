@@ -21,6 +21,7 @@ class Sala{
         Temperatura temperatura;
         Umidade umidade;
         Atuador atuador;
+        Sensor sensor;
         //O atuador "Lampada" está conectado com o sensor de "Luminosidade", o "Umidificador" e "Desumidificador" com o sensor de "Umidade", o "Ventilador" com o sensor de "Temperatura"
     public:
         //Definindo o construtor de "Sala" 
@@ -37,7 +38,8 @@ class Sala{
             luminosidade{nome, ligado, conectado, valor, numero, brilho, luminosidade}, 
             temperatura{nome, ligado, conectado, valor, numero, velocidade}, 
             umidade{nome, ligado, conectado, valor, numero, umidadeRelativa, configuracao, estado}, 
-            atuador{nome, ligado, conectado, valor, conta}{}
+            atuador{nome, ligado, conectado, valor, conta}, 
+            sensor{nome, ligado, conectado, valor, numero}{}
         //Função para imprimir se atuadores estão ligados
         void atualizarAtuadores(){
             cout << "Velocidade do ventilador: " << ventilador.getVelocidade() << endl;
@@ -78,6 +80,9 @@ class Sala{
                 else{
                     throw Defeitos("O nome desse atuador é inválido ");
                 }
+                //Informa o nome do atuador que foi definido
+                cout << "O nome " << atuador.getNomeAtuador() << " foi definido." << endl;
+
             }catch(Defeitos e){
                     cout << e.mensagem << "(" << atuador.getNomeAtuador() << ")" << endl;
                 }
@@ -108,19 +113,19 @@ class Sala{
                 }
                 else if (atuador.getNomeAtuador() == "Desumidificador"){
                     desumidificador.setLigarOuDesligar(ligado);
-                    umidade.setLigarOuDesligar(ligado);
+                    umidade.setConfiguracaoDesumidificador(ligado);
                     if(ligado == 0){
                         desumidificador.setValorNovo(0);
-                        umidade.setValorNovo(0);
+                        umidade.setConfiguracaoDesumidificador(0);
                         atuador.setValorNovo(0);
                     }
                 }
                 else if (atuador.getNomeAtuador() == "Umidificador"){
                     umidificador.setLigarOuDesligar(ligado);
-                    umidade.setLigarOuDesligar(ligado);
+                    umidade.setConfiguracaoUmidificador(ligado);
                     if(ligado == 0){
                         umidificador.setValorNovo(0);
-                        umidade.setValorNovo(0);
+                        umidade.setConfiguracaoUmidificador(0);
                         atuador.setValorNovo(0);
                     }
                 }
@@ -165,25 +170,23 @@ class Sala{
                 }
                 else if (atuador.getNomeAtuador() == "Desumidificador"){
                     desumidificador.setConectarOuDesconectar(conectado);
-                    umidade.setConectarOuDesconectar(conectado);
+                    umidade.setConfiguracaoDesumidificador(conectado);
                     if(conectado == 0){
                         desumidificador.setLigarOuDesligar(0);
-                        umidade.setLigarOuDesligar(0);
+                        umidade.setConfiguracaoDesumidificador(0);
                         desumidificador.setValorNovo(0);
-                        umidade.setValorNovo(0);
                         atuador.setLigarOuDesligar(0);
                         atuador.setValorNovo(0);
                     }
                 }
                 else if (atuador.getNomeAtuador() == "Umidificador"){
                     umidificador.setConectarOuDesconectar(conectado);
-                    umidade.setConectarOuDesconectar(conectado);
+                    umidade.setConfiguracaoUmidificador(conectado);
                     
                     if(conectado == 0){
                         umidificador.setLigarOuDesligar(0);
-                        umidade.setLigarOuDesligar(0);
+                        umidade.setConfiguracaoUmidificador(0);
                         umidificador.setValorNovo(0);
-                        umidade.setValorNovo(0);
                         atuador.setLigarOuDesligar(0);
                         atuador.setValorNovo(0);
                     }
@@ -255,5 +258,15 @@ class Sala{
             }catch(Defeitos e){
                 cout << e.mensagem << "(" << atuador.getNomeAtuador() << ")" << endl;
             }
+        }
+
+        void setValorAleatorioDoAtuador(int numero){
+            sensor.setNumero(numero);
+            
+        }
+
+        int getValorAleatorioDoAtuador(){
+            return sensor.getNumero();
+        
         }
 };

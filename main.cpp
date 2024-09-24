@@ -1,52 +1,76 @@
-#include <iostream>
-#include "Sala.hpp"
-#include "Componente.hpp"
 #include "Atuador.hpp"
-#include "Lampada.hpp"
+#include "Componente.hpp"
 #include "Desumidificador.hpp"
+#include "Lampada.hpp"
+#include "Luminosidade.hpp"
+#include "Sala.hpp"
 #include "Umidificador.hpp"
 #include "Ventilador.hpp"
-#include "Luminosidade.hpp"
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
 using namespace std;
 
-int main(){
-//    Sala s1(string nome, bool ligado, bool conectado, int valor, float conta, int numero, int velocidade, bool brilho, int intensidade, bool estado, bool ajuste, bool configuracao, float umidadeRelativa, float luminosidade);
+int main() {
 
-    Sala s1("Oi",1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 10, 1);
+    // colocar seed para time(0)
+    srand(time(0));
 
-    //Fazendo testes das funções de "Sala"
-    s1.atualizarSensores();
-    s1.atualizarAtuadores();
-    cout << endl;
-    cout << endl;
-    cout << endl;
-    cout << "Mudando Lampada" << endl;
-    s1.setNomeDoAtuador("asd");
-    s1.setConectarOuDesconectarAtuador(0);
-    s1.setLigarOuDesligarAtuador(1);
-    s1.setValorNovoDoAtuador(1);
-    cout << "Mudando Umidificador" << endl;
-    s1.setNomeDoAtuador("Umidificador");
-    s1.setConectarOuDesconectarAtuador(0);
-    s1.setLigarOuDesligarAtuador(0);
-    s1.setValorNovoDoAtuador(1);
-    s1.setConectarOuDesconectarAtuador(0);
-    s1.setConectarOuDesconectarAtuador(1);
-    s1.setLigarOuDesligarAtuador(1);
-    s1.setValorNovoDoAtuador(10);
-    cout << "Mudando Desumidificador" << endl;
-    s1.setNomeDoAtuador("Desumidificador");
-    s1.setConectarOuDesconectarAtuador(0);
-    s1.setLigarOuDesligarAtuador(1);
-    s1.setValorNovoDoAtuador(10);
-    cout << "Mudando Ventilador" << endl;
-    s1.setNomeDoAtuador("Ventilador");
-    s1.setConectarOuDesconectarAtuador(0);
-    s1.setLigarOuDesligarAtuador(0);
-    s1.setValorNovoDoAtuador(0);
-    cout << endl;
-    cout << endl;
-    s1.atualizarSensores();
-    s1.atualizarAtuadores();
+    // gera número aleatório
+    int random = rand();
 
+    //    Sala s1(string nome, bool ligado, bool conectado, int valor, float
+    //    conta, int numero, int velocidade, bool brilho, int intensidade, bool
+    //    estado, bool ajuste, bool configuracao, float umidadeRelativa, float
+    //    luminosidade);
+
+    Sala s1("Oi", 1, 1, 1, 1, random, 1, 1, 1, 1, 1, 1, 10, 1);
+    random = rand();
+    Sala s2("Oi", 1, 1, 1, 1, random, 1, 1, 1, 1, 1, 1, 10, 1);
+    random = rand();
+    Sala s3("Oi", 1, 1, 1, 1, random, 1, 1, 1, 1, 1, 1, 10, 1);
+
+    Sala *sala[3];
+    sala[0] = &s1;
+    sala[1] = &s2;
+    sala[2] = &s3;
+
+    cout <<  sala[0]->getValorAleatorioDoAtuador() << endl;
+    sala[0]->setValorAleatorioDoAtuador(rand());
+    cout <<  sala[0]->getValorAleatorioDoAtuador() << endl;
+
+    // Fazendo testes das funções de "Sala"
+    // sala[0]->atualizarSensores();
+    // sala[0]->atualizarAtuadores();
+    // cout << endl;
+    // cout << endl;
+    // cout << endl;
+    // cout << "Mudando Lampada" << endl;
+    // sala[0]->setNomeDoAtuador("asd");
+    // sala[0]->setConectarOuDesconectarAtuador(0);
+    // sala[0]->setLigarOuDesligarAtuador(1);
+    // sala[0]->setValorNovoDoAtuador(1);
+    // cout << "Mudando Umidificador" << endl;
+    // sala[0]->setNomeDoAtuador("Umidificador");
+    // sala[0]->setConectarOuDesconectarAtuador(0);
+    // sala[0]->setLigarOuDesligarAtuador(0);
+    // sala[0]->setValorNovoDoAtuador(1);
+    // sala[0]->setConectarOuDesconectarAtuador(0);
+    // sala[0]->setConectarOuDesconectarAtuador(1);
+    // sala[0]->setLigarOuDesligarAtuador(1);
+    // sala[0]->setValorNovoDoAtuador(10);
+    // cout << "Mudando Desumidificador" << endl;
+    // sala[0]->setNomeDoAtuador("Desumidificador");
+    // sala[0]->setConectarOuDesconectarAtuador(0);
+    // sala[0]->setLigarOuDesligarAtuador(1);
+    // sala[0]->setValorNovoDoAtuador(10);
+    // cout << "Mudando Ventilador" << endl;
+    // sala[0]->setNomeDoAtuador("Ventilador");
+    // sala[0]->setConectarOuDesconectarAtuador(0);
+    // sala[0]->setLigarOuDesligarAtuador(0);
+    // sala[0]->setValorNovoDoAtuador(0);
+    // cout << endl;
+    // cout << endl;
+    // sala[0]->atualizarSensores();
+    // sala[0]->atualizarAtuadores();
 }

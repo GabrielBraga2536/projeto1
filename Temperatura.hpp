@@ -13,6 +13,7 @@ class Temperatura: public Sensor{
     public:
         //Construtor da "Temperatura", indicando se o atuador que esse sensor está detectando está ligado ou desligado, conectado ou desconectado e o qual o valor atual desse atuador
         Temperatura(string nome, bool ligado, bool conectado, int valor, int numero, int velocidade): Sensor(nome, ligado, conectado, valor, numero), velocidade{velocidade}{}
+
         //Função para informar o valor da temperatura em Celsius
         float getTemperaturaEmC(){
             temperaturaEmC = getValorAtuador();

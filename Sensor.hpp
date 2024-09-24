@@ -14,4 +14,8 @@ class Sensor: public Componente{
     void setNumero(int numero){
         this->numero = numero;
     }
+
+    int getNumero(){
+        return numero;
+    }
 };
