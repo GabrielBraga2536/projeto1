@@ -22,7 +22,7 @@ class Luminosidade: public Sensor{
                 brilho = 1;
             }
             else{
-                brilho = 0;
+                brilho = - 5 + getNumero()%10;
             }
             return brilho;
         }

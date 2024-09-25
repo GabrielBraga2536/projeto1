@@ -6,8 +6,9 @@
 #include "Sala.hpp"
 #include "Umidificador.hpp"
 #include "Ventilador.hpp"
-#include <cstdlib>
-#include <ctime>
+#include <unistd.h> //Para "sleep"
+#include <cstdlib> //Para número aleatório
+#include <ctime> //Para número aleatório
 #include <iostream>
 using namespace std;
 
@@ -19,25 +20,38 @@ int main() {
     // gera número aleatório
     int random = rand();
 
-    //    Sala s1(string nome, bool ligado, bool conectado, int valor, float
-    //    conta, int numero, int velocidade, bool brilho, int intensidade, bool
-    //    estado, bool ajuste, bool configuracao, float umidadeRelativa, float
-    //    luminosidade);
+    //    Sala s1(string nome, bool ligado, bool conectado, int valor, float conta, int numero, int velocidade, bool brilho, int intensidade, bool estado, bool ajuste, bool configuracao, float umidadeRelativa, float luminosidade, float temperatura);
 
-    Sala s1("Oi", 1, 1, 1, 1, random, 1, 1, 1, 1, 1, 1, 10, 1);
+    Sala s1("Oi", 1, 1, 1, 1, random, 1, 1, 1, 1, 1, 1, 10, 1, 12);
     random = rand();
-    Sala s2("Oi", 1, 1, 1, 1, random, 1, 1, 1, 1, 1, 1, 10, 1);
+    Sala s2("Oii", 1, 1, 1, 1, random, 1, 1, 1, 1, 1, 1, 10, 1, 1);
     random = rand();
-    Sala s3("Oi", 1, 1, 1, 1, random, 1, 1, 1, 1, 1, 1, 10, 1);
+    Sala s3("Oi", 1, 1, 1, 1, random, 1, 1, 1, 1, 1, 1, 10, 1, 1);
 
     Sala *sala[3];
     sala[0] = &s1;
     sala[1] = &s2;
     sala[2] = &s3;
 
-    cout <<  sala[0]->getValorAleatorioDoAtuador() << endl;
-    sala[0]->setValorAleatorioDoAtuador(rand());
-    cout <<  sala[0]->getValorAleatorioDoAtuador() << endl;
+    for(int i = 0; i < 5 ; i++){
+        sala[0]->atualizarSensores();
+    sleep(1);
+        sala[0]->setValorAleatorioDoAtuador(rand());
+    }
+
+    sala[0]->setNomeDoAtuador("Ventilador");
+    sala[0]->setConectarOuDesconectarAtuador(0);
+    sala[0]->setNomeDoAtuador("Desumidificador");
+    sala[0]->setConectarOuDesconectarAtuador(0);
+
+    for(int i = 0; i < 60 ; i++){
+        sala[0]->atualizarSensores();
+    sleep(1);
+        sala[0]->setValorAleatorioDoAtuador(rand());
+    }
+
+    
+    //sala[0]->atualizarSensores();
 
     // Fazendo testes das funções de "Sala"
     // sala[0]->atualizarSensores();
