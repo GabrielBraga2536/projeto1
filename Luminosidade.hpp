@@ -10,6 +10,7 @@ class Luminosidade: public Sensor{
         }
 
         float luminosidade;
+        float luminosidadeNova;
         int brilho;
 
     public:
@@ -17,13 +18,25 @@ class Luminosidade: public Sensor{
         Luminosidade(string nome, bool ligado, bool conectado, int valor, int numero, int brilho, float luminosidade): Sensor(nome, ligado, conectado, valor, numero), luminosidade{luminosidade}, brilho{brilho}{}
         
         //Função para o sensor informar se está claro ou escuro, ainda precisa criar a função para limitar a claridade do sensor
-        bool estaClaro(){
-            if(getValorAtuador() >= 1){
-                brilho = 1;
+        float estaClaro(){
+            return luminosidade;
+        }
+
+        void setNovaLuminosidade(){
+                luminosidadeNova = luminosidade;
+            if (brilho <= 0){
+                    luminosidadeNova = 10 - (float)(getNumero()%21)/100; 
+            }
+            else if (brilho == 1 ){
+                    luminosidadeNova = 500 - (float)(getNumero()%211)/100;
             }
             else{
-                brilho = - 5 + getNumero()%10;
+                    luminosidadeNova = 1000 - (float)(getNumero()%211)/100;
             }
-            return brilho;
+                luminosidade = luminosidadeNova;
+        }
+
+        void setBrilhoNovo(int brilho){
+            this->brilho = brilho;
         }
 };

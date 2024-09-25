@@ -25,7 +25,13 @@ class Temperatura: public Sensor{
         //Função para alterar a temperatura
         void setNovaTemperatura(){
             temperaturaNova = temperatura;
-            if (velocidade > 0){
+            if (velocidade > 2){
+                temperaturaNova = temperaturaNova - (float)(getNumero()%431)/100; 
+            }
+            else if (velocidade == 2){
+                temperaturaNova = temperaturaNova - (float)(getNumero()%167)/100; 
+            }
+            else if (velocidade == 1){
                 temperaturaNova = temperaturaNova - (float)(getNumero()%29)/100; 
             }
             else {
