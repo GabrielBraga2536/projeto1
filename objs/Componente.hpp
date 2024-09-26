@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "Defeitos.hpp"
 using namespace std;
 
 class Componente{
@@ -10,20 +11,43 @@ class Componente{
         string nome;
 
     public:
-        Componente(int configuracao){
-            this->configuracao = configuracao;
+        //criando o construtor de "Componente" e suas funções para alterar os valores de ligado, conectado e valor
+        Componente(string nome, bool ligado, bool conectado, int valor){
+            this->ligado = ligado;
+            this->conectado = conectado;
+            this->valor = valor;
+            this->nome = nome;
         }
 
-        void ligar(){
+        void setNome(string nome){
+            this->nome = nome;
+        }
+
+        void setConectarOuDesconectar(bool conectado){
+            this->conectado = conectado;
+        }
+
+        void setLigarOuDesligar(bool ligado){
             this->ligado = ligado;
         }
 
-        void desligar(){
-            this->ligado = ligado;
+        void setValorNovo(int valor){
+            this->valor = valor;
         }
 
-        void ligar(){
-            this->ligado = ligado;
+        bool getConectadoOuDesconectado(){
+            return conectado;
         }
 
+        bool getLigadoOuDesligado(){
+            return ligado;
+        }
+
+        string getNomeAtuador(){
+            return nome;
+        }
+
+        int getValorAtuador(){
+            return valor;
+        }
 };
