@@ -1,4 +1,5 @@
 #pragma once
+
 #include <iostream>
 #include "Atuador.hpp"
 #include "Ventilador.hpp"
@@ -9,6 +10,7 @@
 #include "Umidade.hpp"
 #include "Temperatura.hpp"
 #include "Sensor.hpp"
+
 using namespace std;
 
 class Sala{
@@ -56,7 +58,7 @@ class Sala{
             cout << "Sensor de temperatura em Fahrenheit: " << temperatura.getTemperaturaEmF() << endl;
             cout << "Sensor de temperatura em Kelvin: " << temperatura.getTemperaturaEmK() << endl;
             cout << "Sensor de luminosidade: " << luminosidade.estaClaro() << endl;
-            cout << "Sensor de umidade relativa: " << umidade.getUmidadeRelativa() << "%" << endl;
+            cout << "Sensor de umidade relativa: " << umidade.getUmidadeRelativa() << "%" << endl << endl;
             umidade.setNumero(numero);
             luminosidade.setNumero(numero);
             temperatura.setNumero(numero); 
