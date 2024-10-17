@@ -24,15 +24,18 @@ int main() {
     // gera número aleatório
     int random = rand();
     
+    string atuadorEscolhido;
+    int valor;
+    int alterandoAtuador;
     int escolhaPrincipal = 0;
-    int escolhaSala = 0;
+    int escolhaAtuador = 0;
     
     // Criando os objetos
     Sala s0("Oi", 1, 1, 1, 1, random, 2, 2, 1, 1, 0, 1, 55, 1, 35);
     random = rand();
-    Sala s1("Oi", 1, 1, 1, 1, random, 1, 1, 1, 1, 1, true, 50, 1, 1);
+    Sala s1("Oi", 1, 1, 1, 1, random, 0, 2, 1, 1, 0, 0, 55, 1, 35);
     random = rand();
-    Sala s2("Oi", 1, 1, 1, 1, random, 1, 1, 1, 1, 1, 1, 10, 1, 1);
+    Sala s2("Oi", 1, 1, 1, 1, random, 0, 0, 0, 0, 0, 0, 55, 1, 35);
     
     // Colocando ponteiros para os objetos
     Sala *sala[3];
@@ -42,39 +45,42 @@ int main() {
     
     while(true){
         switch (escolhaPrincipal){
-        case 0:
-            menuPrincipal();
-            cin >> escolhaPrincipal;
-            break;
-        case 1:
-            menuSala(1, sala[0]);
-            break;
-        case 2:
-            menuSala(2, sala[1]);
-            break;
-        case 3:
-            menuSala(3, sala[2]);
-            break;
-        default:
-            break;
-        }
-        if(escolhaSala == 4){
-            break;
-        }
-        do{
-            switch (escolhaSala){
+            case 0:
+                menuPrincipal();
+                cin >> escolhaPrincipal;
+                break;
             case 1:
-                
+                menuSala(1, sala[0]);
+                sleep(2);
                 break;
             case 2:
+                menuSala(2, sala[1]);
+                sleep(2);
+                break;
+            case 3:
+                menuSala(3, sala[2]);
+                sleep(2);
                 break;
             default:
                 break;
-            }
-        }while(escolhaSala != 2);
+        }
+            while(true){
+                atuadorEscolhido = menuAtuadores(escolhaAtuador, sala[escolhaPrincipal]);
+                if(atuadorEscolhido == "Sair"){
+                    break;
+                }
+                sala[escolhaPrincipal]->setNomeDoAtuador("atuadorEscolhido");
+                alterandoAtuador = alterarAtuador(escolhaAtuador, sala[escolhaPrincipal]);
+                if(alterandoAtuador == 6){
+                    break;
+        }
+        escolhaPrincipal = 0;
+        alterandoAtuador = 0;
+        }
+    }    
 
 
-    }
+    
     
 
     /* CONSTRUTOR DA SALA:

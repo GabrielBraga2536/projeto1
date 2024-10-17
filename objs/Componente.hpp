@@ -43,6 +43,24 @@ class Componente{
             return ligado;
         }
 
+        string getEstadoDesconectado(){
+            if (conectado == 1){
+                return "Conectado";
+            }
+            else{
+                return "Desconectado";
+            }
+        }
+
+        string getEstadoLigado(){
+            if (ligado == 1){
+                return "Ligado";
+            }
+            else{
+                return "Desligado";
+            }
+        }
+
         string getNomeAtuador(){
             return nome;
         }

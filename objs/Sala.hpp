@@ -44,10 +44,10 @@ class Sala{
             sensor{nome, ligado, conectado, valor, numero}{}
         //Função para imprimir se atuadores estão ligados
         void atualizarAtuadores(){
-            cout << "Velocidade do ventilador: " << ventilador.getVelocidade() << endl;
-            cout << "Intensidade da lampada: " << lampada.getLampadaEstado() << endl;
-            cout << "Configuração do desumidificador: " << desumidificador.getDesumidificador() << endl;
-            cout << "Configuração do umidificador: " << umidificador.getUmidificador() << endl;
+            cout << "Velocidade do ventilador: " << ventilador.getVelocidade() << " (" << ventilador.getEstadoDesconectado() << " e "<< ventilador.getEstadoLigado() << ")" << endl;
+            cout << "Intensidade da lampada: " << lampada.getLampadaEstado() << " (" << lampada.getEstadoDesconectado() << " e "<< lampada.getEstadoLigado() << ")"  << endl;
+            cout << "Estado do desumidificador: " << desumidificador.getDesumidificador() << " (" << desumidificador.getEstadoDesconectado() << " e "<< desumidificador.getEstadoLigado() << ")"  << endl;
+            cout << "Estado do umidificador: " << umidificador.getUmidificador() << " (" << umidificador.getEstadoDesconectado() << " e "<< umidificador.getEstadoLigado() << ")"  << endl << endl;
         }
         //Função para imprimir os valores que os sensores estão detectando
         void atualizarSensores(int numero){
@@ -197,6 +197,8 @@ class Sala{
                     if(conectado == 0){
                         lampada.setLigarOuDesligar(0);
                         luminosidade.setLigarOuDesligar(0);
+                        lampada.setValorNovo(0);
+                        luminosidade.setValorNovo(0);
                         lampada.setBrilho(0);
                         luminosidade.setBrilhoNovo(0);
                         atuador.setLigarOuDesligar(0);
@@ -212,6 +214,8 @@ class Sala{
                         desumidificador.setDesumidificador(0);
                         atuador.setLigarOuDesligar(0);
                         atuador.setValorNovo(0);
+                        desumidificador.setValorNovo(0);
+                        umidade.setValorNovo(0);
                     }
                 }
                 else if (atuador.getNomeAtuador() == "Umidificador"){
@@ -224,6 +228,8 @@ class Sala{
                         umidificador.setUmidificador(0);
                         atuador.setLigarOuDesligar(0);
                         atuador.setValorNovo(0);
+                        umidificador.setValorNovo(0);
+                        umidade.setValorNovo(0);
                     }
                 }
                 else if (atuador.getNomeAtuador() == "Ventilador"){
@@ -236,6 +242,8 @@ class Sala{
                         temperatura.setNovaVelocidade(0);
                         atuador.setLigarOuDesligar(0);
                         atuador.setValorNovo(0);
+                        ventilador.setValorNovo(0);
+                        temperatura.setValorNovo(0);
                     }
                 }
                 //Informa se o nome do atuador é inválido
