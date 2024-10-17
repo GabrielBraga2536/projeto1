@@ -42,8 +42,8 @@ class Temperatura: public Sensor{
                 temperaturaNova = 35;
                 temperaturaNova = temperaturaNova + (float)(getNumero()%11)/100;
             }
-            else if (temperaturaNova < 10){
-                temperaturaNova = 9.99;
+            else if (temperaturaNova < 20){
+                temperaturaNova = 19.99;
                 temperaturaNova = temperaturaNova - (float)(getNumero()%11)/100;
             }
             temperatura = temperaturaNova;

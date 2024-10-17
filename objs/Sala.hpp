@@ -44,10 +44,10 @@ class Sala{
             sensor{nome, ligado, conectado, valor, numero}{}
         //Função para imprimir se atuadores estão ligados
         void atualizarAtuadores(){
-            cout << "Velocidade do ventilador: " << ventilador.getVelocidade() << " (" << ventilador.getEstadoDesconectado() << " e "<< ventilador.getEstadoLigado() << ")" << endl;
             cout << "Intensidade da lampada: " << lampada.getLampadaEstado() << " (" << lampada.getEstadoDesconectado() << " e "<< lampada.getEstadoLigado() << ")"  << endl;
-            cout << "Estado do desumidificador: " << desumidificador.getDesumidificador() << " (" << desumidificador.getEstadoDesconectado() << " e "<< desumidificador.getEstadoLigado() << ")"  << endl;
-            cout << "Estado do umidificador: " << umidificador.getUmidificador() << " (" << umidificador.getEstadoDesconectado() << " e "<< umidificador.getEstadoLigado() << ")"  << endl << endl;
+            cout << "Velocidade do ventilador: " << ventilador.getVelocidade() << " (" << ventilador.getEstadoDesconectado() << " e "<< ventilador.getEstadoLigado() << ")" << endl;
+            cout << "Estado do umidificador: " << umidificador.getUmidificador() << " (" << umidificador.getEstadoDesconectado() << " e "<< umidificador.getEstadoLigado() << ")"  << endl ;
+            cout << "Estado do desumidificador: " << desumidificador.getDesumidificador() << " (" << desumidificador.getEstadoDesconectado() << " e "<< desumidificador.getEstadoLigado() << ")"  << endl << endl;
         }
         //Função para imprimir os valores que os sensores estão detectando
         void atualizarSensores(int numero){

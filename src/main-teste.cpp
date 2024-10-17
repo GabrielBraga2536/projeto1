@@ -7,14 +7,38 @@
 #include "Umidificador.hpp"
 #include "Ventilador.hpp"
 
-#include "functions.cpp"
+#include "\Users\Usuario\Desktop\Codes\C++\Orientacao_a_Objetos\projeto1\refs\functions.cpp"
 
 #include <unistd.h> //Para "sleep"
 #include <cstdlib> //Para número aleatório
 #include <ctime> //Para número aleatório    
 #include <iostream>
+#include <iostream>
+#include <future>   // For async and future
+#include <chrono>   // For timing
+#include <thread>   // For thread sleep
+
 
 using namespace std;
+
+bool getUserInputWithTimeout(char& input, int timeoutMs) {
+    std::promise<char> promise;
+    std::future<char> future = promise.get_future();
+    
+    // Lambda to capture user input in a separate thread
+    std::thread([&promise]() {
+        char temp;
+        std::cin >> temp;
+        promise.set_value(temp);
+    }).detach();
+
+    if (future.wait_for(std::chrono::milliseconds(timeoutMs)) == std::future_status::ready) {
+        input = future.get();
+        return true;  // Input was provided
+    } else {
+        return false;  // Timeout reached, no input
+    }
+}
 
 int main() {
   
@@ -23,6 +47,7 @@ int main() {
   
   // gera número aleatório
   int random = rand();
+  int valor;
   
   int escolherSala = 0, decisaoSala = 0, aletandoAtuador = 0;
   string atuadorEscolhido;
@@ -30,9 +55,9 @@ int main() {
   // Criando os objetos
   Sala s0("Oi", 1, 1, 1, 1, random, 0, 1, 1, 1, 0, 0, 55, 1, 35);
   random = rand();
-  Sala s1("Oi", 1, 1, 1, 1, random, 0, 2, 1, 1, 0, 0, 35, 1, 35);
+  Sala s1("Oi", 1, 1, 1, 1, random, 0, 2, 1, 1, 0, 0, 55, 1, 35);
   random = rand();
-  Sala s2("Oi", 1, 1, 1, 1, random, 0, 0, 0, 0, 0, 0, 55, 1, 35);
+  Sala s2("Oi", 1, 1, 1, 1, random, 0, 0, 1, 1, 0, 0, 55, 1, 35);
   
   // Colocando ponteiros para os objetos
   Sala *sala[3];
@@ -48,20 +73,47 @@ int main() {
     else if (escolherSala <= 0 || escolherSala >= 5){}
     else{
       while(true){
+        menuSala1(escolherSala, sala[escolherSala - 1]);
+        sala[escolherSala - 1]->atualizarSensores(rand());
         menuSala(escolherSala, sala[escolherSala - 1]);
-        cin >> decisaoSala;
+        char decisaoSala;
+    if (getUserInputWithTimeout(decisaoSala, 1000)) {
+    } else {
+    }
         
         if (decisaoSala == 2){break;}
         else if (decisaoSala <= 0 || decisaoSala >= 4 || decisaoSala == 3){}
         else{
           while(true){
-            atuadorEscolhido = menuAtuadores(escolherSala, sala[escolherSala]);
-            
+            menuAtuadoresLetras(escolherSala, sala[escolherSala - 1], escolherSala); 
+            sala[escolherSala - 1]->atualizarAtuadores();
+            atuadorEscolhido = menuAtuadores(escolherSala, sala[escolherSala - 1], escolherSala);
             if (atuadorEscolhido == "Sair"){break;}
             else if (escolherSala <= 0 || escolherSala >= 6){}
             else{
               sala[escolherSala - 1]->setNomeDoAtuador(atuadorEscolhido);
-              aletandoAtuador = alterarAtuador(escolherSala, sala[escolherSala - 1]);
+              aletandoAtuador = alterarAtuador();
+                if(aletandoAtuador == 1){
+              sala[escolherSala - 1]->setConectarOuDesconectarAtuador(1);
+                }   
+                else if(aletandoAtuador == 2){
+                  sala[escolherSala - 1]->setConectarOuDesconectarAtuador(0);
+                }  
+                else if(aletandoAtuador == 3){
+                  sala[escolherSala - 1]->setLigarOuDesligarAtuador(1);
+                }  
+                else if(aletandoAtuador == 4){
+                  sala[escolherSala - 1]->setLigarOuDesligarAtuador(0);
+                } 
+                else if(aletandoAtuador == 5){
+                  cout << endl << "Para qual valor? ";
+                  cin >> valor;
+                  sala[escolherSala - 1]->setValorNovoDoAtuador(valor);
+                }  
+                else {}
+            
+            sleep(1);
+            
               
               if (aletandoAtuador == 6){break;}
             }
