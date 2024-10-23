@@ -25,7 +25,7 @@ Sensores:
 - [Comandos](#comandos)
 - [Repositório](#clonar-o-repositório)
 
-### Ferramentas utilizadas
+## Ferramentas utilizadas
 
 - [Linguagem] C++
 - [Compilador] MinGW
@@ -111,7 +111,7 @@ Para instalar a IDE: https://code.visualstudio.com/download
 
 Obs: para uma melhor visualização da estrutura do projeto, verifique o arquivo "diagrama_de_classes.png" na pasta refs.
 
-### Comandos
+## Comandos
 
 Para compilar o projeto:
 g++ -I \Caminho\até\a\pasta\projeto1\objs -I \Caminho\até\a\pasta\projeto1\refs -o a.exe main_sys.cpp
@@ -122,7 +122,7 @@ cd src
 Para rodar o projeto:
 .\a.exe
 
-# Clonar o repositório
+## Clonar o repositório
 git clone https://github.com/GabrielBraga2536/projeto1
 
 
