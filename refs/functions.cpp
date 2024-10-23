@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include <unistd.h> 
 
+#include <future>   // For async and future
+#include <chrono>   // For timing
+#include <thread>   // For thread sleep
+
 #include <Sala.hpp>
 
 using namespace std;
@@ -66,7 +70,7 @@ void menuSala1(int s, Sala sala[3]){
 }
 void menuSala(int s, Sala sala[3]){
   
-  cout << " 1 - Configurar atuadores              3 - Atualizar" << endl;
+  cout << " 1 - Configurar atuadores                3 - Atualizar" << endl;
   cout << " 2 - Voltar" << endl << endl;
   cout << " O que deseja fazer: ";
 }
